@@ -1,0 +1,43 @@
+{
+	"schemaVersion": 1,
+	"id": "super_villager",
+	"version": "${version}",
+	"name": "super_villager",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/super_villager/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"lvedy.super_villager.Super_villager"
+		],
+		"fabric-datagen": [
+			"lvedy.super_villager.Super_villagerDataGenerator"
+		],
+		"client": [
+			"lvedy.super_villager.Super_villagerClientMod"
+		],
+		"server": [
+			"lvedy.super_villager.Super_villagerServerMod"
+		]
+	},
+	"mixins": [
+		"super_villager.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

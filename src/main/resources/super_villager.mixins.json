@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "lvedy.super_villager.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ExampleMixin",
+    "AbstractSkeletonEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+  ]
+}
