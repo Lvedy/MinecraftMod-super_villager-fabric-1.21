@@ -198,6 +198,9 @@ public class TradeGUI {
             itemStack.set(DataComponentTypes.CUSTOM_NAME,Text.literal("购买足力健").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
             List<AttributeModifiersComponent.Entry> list = new ArrayList<>(){{
                 add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_MOVEMENT_SPEED,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_speed"),0.8, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE), AttributeModifierSlot.FEET));
+                add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_ARMOR,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_armor"),4, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.FEET));
+                add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_ARMOR_TOUGHNESS,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_armor_toughness"),4, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.FEET));
+                add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_armor_toughness"),0.1, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.FEET));
             }};
             itemStack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS,new AttributeModifiersComponent(list,true));
             itemStack.set(DataComponentTypes.LORE, LoreComponent.DEFAULT.with(Text.literal("花费绿宝石x64").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false))));
@@ -230,6 +233,10 @@ public class TradeGUI {
             ItemStack itemStack = Items.IRON_CHESTPLATE.getDefaultStack();
             itemStack.set(DataComponentTypes.CUSTOM_NAME, Text.literal("购买村民基础护甲+0.5").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
             itemStack.set(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true);
+            List<AttributeModifiersComponent.Entry> list = new ArrayList<>(){{
+                add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_ARMOR,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_armor"),0, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.FEET));
+            }};
+            itemStack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS,new AttributeModifiersComponent(list,false));
             gui.setSlot(33, new GuiElementBuilder(itemStack).setCount(1).setCallback((index, clickType, actionType) -> {
                 ModSetting.ModTrade(player,8);
             }).addLoreLine(Text.literal("花费绿宝石x24").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false)))
@@ -321,7 +328,7 @@ public class TradeGUI {
                 return super.onClick(index, type, action, element);
             }
         };
-        gui.setTitle(Text.literal(getString(random.nextInt(10)).formatted(Formatting.GOLD)));
+        gui.setTitle(Text.literal(getString(random.nextInt(11)).formatted(Formatting.GOLD)));
         gui.setAutoUpdate(true);
         return gui;
     }
@@ -332,7 +339,7 @@ public class TradeGUI {
         if(i==2)
             return "你给我绿宝石,我给你货物,不用操心太多";
         if(i==3)
-            return "这不叫捡破烂,我只是拿走了别人不要的宝贝";
+            return "这不叫捡破烂,我只是拿了别人不要的宝贝";
         if(i==4)
             return "想知道我的故事？朋友,好故事很贵的";
         if(i==5)
@@ -341,6 +348,10 @@ public class TradeGUI {
             return "别嫌贵,收集这些破烂很费劲的";
         if(i==7)
             return "有备无患,有备无患啊朋友";
+        if(i==8)
+            return "一点点垃圾，一点点恐怖的小玩意儿...";
+        if(i==9)
+            return "指纹留多了商品会掉价的，朋友。";
         return "感谢你的大力支持,朋友,让我们继续合作吧";
     }
 }

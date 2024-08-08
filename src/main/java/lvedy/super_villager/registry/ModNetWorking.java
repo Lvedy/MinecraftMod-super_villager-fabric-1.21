@@ -153,6 +153,9 @@ public class ModNetWorking{
             itemStack.set(DataComponentTypes.CUSTOM_NAME,Text.literal("足力健").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
             List<AttributeModifiersComponent.Entry> list = new ArrayList<>(){{
                 add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_MOVEMENT_SPEED,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_speed"),0.8, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE), AttributeModifierSlot.FEET));
+                add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_ARMOR,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_armor"),4, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.FEET));
+                add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_ARMOR_TOUGHNESS,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_armor_toughness"),4, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.FEET));
+                add(new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,new EntityAttributeModifier(Identifier.of(Super_villager.MOD_ID,"base_armor_toughness"),0.1, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.FEET));
             }};
             itemStack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS,new AttributeModifiersComponent(list,true));
             return ModSetting.getSlotByItem(player,itemStack,Items.EMERALD.getDefaultStack(),1,64);
