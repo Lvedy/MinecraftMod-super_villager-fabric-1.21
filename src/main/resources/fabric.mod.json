@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "super_villager",
-	"version": "${version}",
+	"version": "beta_0.0.4",
 	"name": "super_villager",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [

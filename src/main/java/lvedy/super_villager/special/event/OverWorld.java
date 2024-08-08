@@ -4,16 +4,13 @@ import lvedy.super_villager.ModSetting;
 import lvedy.super_villager.special.entity.custom.SuperVillagerEntity;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.SkeletonEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Items;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Formatting;
@@ -99,7 +96,7 @@ public class OverWorld implements ServerTickEvents.StartTick{
             skeletonEntity.equipStack(EquipmentSlot.CHEST, ModSetting.GetArmorByInt(EquipmentSlot.CHEST,(level+2)/5).getDefaultStack());
             skeletonEntity.equipStack(EquipmentSlot.LEGS, ModSetting.GetArmorByInt(EquipmentSlot.LEGS,(level+3)/5).getDefaultStack());
             skeletonEntity.equipStack(EquipmentSlot.FEET, ModSetting.GetArmorByInt(EquipmentSlot.FEET,(level+4)/5).getDefaultStack());
-            Objects.requireNonNull(skeletonEntity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)).setBaseValue(skeletonEntity.getAttributeBaseValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)+ (double) level /3);
+            Objects.requireNonNull(skeletonEntity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)).setBaseValue(skeletonEntity.getAttributeBaseValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)+ (float) level /10);
         }
     }
 }

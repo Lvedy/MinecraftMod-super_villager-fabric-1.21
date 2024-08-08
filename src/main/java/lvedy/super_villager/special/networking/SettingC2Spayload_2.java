@@ -8,9 +8,9 @@ import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.util.Identifier;
 
-public record SettingC2Spayload_2(int[] a,boolean b) implements CustomPayload{
+public record SettingC2Spayload_2(int[] a,boolean b,boolean trade) implements CustomPayload{
     public static final CustomPayload.Id<SettingC2Spayload_2> ID = new CustomPayload.Id<>(ModNetWorking.SET2);
-    public static final PacketCodec<PacketByteBuf, SettingC2Spayload_2> CODEC = PacketCodec.of((value, buf) -> {buf.writeIntArray(value.a);buf.writeBoolean(value.b);}, buf -> new SettingC2Spayload_2(buf.readIntArray(),buf.readBoolean()));
+    public static final PacketCodec<PacketByteBuf, SettingC2Spayload_2> CODEC = PacketCodec.of((value, buf) -> {buf.writeIntArray(value.a);buf.writeBoolean(value.b);buf.writeBoolean(value.trade);}, buf -> new SettingC2Spayload_2(buf.readIntArray(),buf.readBoolean(),buf.readBoolean()));
     //public static final PacketCodec<PacketByteBuf,SettingC2Spayload_2> CODEC = PacketCodecs.BYTE_ARRAY.xmap(SettingC2Spayload_2::new,SettingC2Spayload_2::a).cast();
 
     @Override

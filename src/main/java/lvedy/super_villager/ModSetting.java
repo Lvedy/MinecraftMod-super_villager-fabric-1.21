@@ -1,9 +1,7 @@
 package lvedy.super_villager;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import lvedy.super_villager.special.GUI.TradeScreen;
-import lvedy.super_villager.special.networking.SettingC2Spayload_2;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import eu.pb4.sgui.api.gui.SimpleGui;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -19,8 +17,9 @@ import net.minecraft.network.packet.s2c.play.OverlayMessageS2CPacket;
 import net.minecraft.network.packet.s2c.play.TitleFadeS2CPacket;
 import net.minecraft.network.packet.s2c.play.TitleS2CPacket;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.Texts;
 import net.minecraft.util.Formatting;
@@ -30,14 +29,15 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.function.Function;
+
+import static lvedy.super_villager.registry.ModNetWorking.Trade;
 
 public class ModSetting {
     public static boolean look_screen = false;
     public static boolean open_screen = false;
-    public static boolean look_trade_screen = false;
-    public static boolean open_trade_screen = false;
     public static boolean Last = false;
     public static boolean pian_xin = false;
     public static MinecraftServer server;
@@ -45,6 +45,7 @@ public class ModSetting {
         add(EntityType.ZOMBIE);
         add(EntityType.SKELETON);
     }};
+    public static List<ServerPlayerEntity> tradingPlayer = new ArrayList<>();
 
     public static int level = 0;    //危险等级
     public static int level_time = 2;   //多少波次提升一次危险等级
@@ -289,7 +290,16 @@ public class ModSetting {
             livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 300, 0));
     }
 
-    public static void TradeForVillager(PlayerEntity player, Item item, int number, int select){
+    public static void ModTrade(ServerPlayerEntity player,int a){
+        if(Trade(player, a)) {
+            player.getWorld().playSound(null,player.getBlockPos(), SoundEvents.ENTITY_VILLAGER_YES, SoundCategory.PLAYERS,5,1);
+        }
+        else {
+            player.getWorld().playSound(null,player.getBlockPos(),SoundEvents.ENTITY_VILLAGER_NO,SoundCategory.PLAYERS,5,1);
+        }
+    }
+
+    public static Boolean TradeForVillager(PlayerEntity player, Item item, int number, int select){
         int i = player.getInventory().getSlotWithStack(item.getDefaultStack());
         if(i == -1 && player.getOffHandStack().getItem() == item && player.getOffHandStack().getCount() >= number){
             if (select == 0) {
@@ -316,6 +326,7 @@ public class ModSetting {
                 ModSetting.player_register++;
                 player.getOffHandStack().setCount(player.getOffHandStack().getCount() - number);
             }
+            return true;
         }
         if(i != -1) {
             for (int j = 0; j <= 35; j++) {
@@ -323,40 +334,36 @@ public class ModSetting {
                     if (select == 0) {
                         ModSetting.villager_health++;
                         player.getInventory().getStack(j).setCount(player.getInventory().getStack(j).getCount() - number);
-                        break;
                     }
                     if (select == 1 && ModSetting.villager_armor < 60) {
                         ModSetting.villager_armor++;
                         player.getInventory().getStack(j).setCount(player.getInventory().getStack(j).getCount() - number);
-                        break;
                     }
                     if (select == 2 && ModSetting.villager_armor_toughness < 50) {
                         ModSetting.villager_armor_toughness++;
                         player.getInventory().getStack(j).setCount(player.getInventory().getStack(j).getCount() - number);
-                        break;
                     }
                     if (select == 3 && ModSetting.player_heath_boost < 5) {
                         ModSetting.player_heath_boost++;
                         player.getInventory().getStack(j).setCount(player.getInventory().getStack(j).getCount() - number);
-                        break;
                     }
                     if (select == 4 && ModSetting.player_power < 3) {
                         ModSetting.player_power++;
                         player.getInventory().getStack(j).setCount(player.getInventory().getStack(j).getCount() - number);
-                        break;
                     }
                     if (select == 5 && ModSetting.player_register < 2) {
                         ModSetting.player_register++;
                         player.getInventory().getStack(j).setCount(player.getInventory().getStack(j).getCount() - number);
-                        break;
                     }
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     //其实是用来执行交易的方法
-    public static void getSlotByItem(PlayerEntity player, ItemStack itemStack1, ItemStack itemStack2, int number1, int number2){
+    public static Boolean getSlotByItem(PlayerEntity player, ItemStack itemStack1, ItemStack itemStack2, int number1, int number2){
         int i = player.getInventory().getSlotWithStack(itemStack2);
         if(i == -1 && player.getOffHandStack().getItem() == itemStack2.getItem() && player.getOffHandStack().getCount() >= number2){
             player.getOffHandStack().setCount(player.getOffHandStack().getCount() - number2);
@@ -369,6 +376,7 @@ public class ModSetting {
                     itemEntity.setOwner(player.getUuid());
                 }
             }
+            return true;
         }
         if(i != -1) {
             for (int j = 0; j <= 35; j++) {
@@ -383,10 +391,11 @@ public class ModSetting {
                             itemEntity.setOwner(player.getUuid());
                         }
                     }
-                    break;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     public static Item GetArmorByInt(EquipmentSlot equipmentSlot, int level){

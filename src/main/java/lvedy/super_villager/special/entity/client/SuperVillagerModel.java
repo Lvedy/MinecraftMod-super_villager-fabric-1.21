@@ -5,12 +5,9 @@ import lvedy.super_villager.Super_villager;
 import lvedy.super_villager.special.entity.custom.SuperVillagerEntity;
 import lvedy.super_villager.special.event.OverWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
 import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.model.GeoModel;
-import software.bernie.geckolib.model.data.EntityModelData;
 
 public class SuperVillagerModel extends GeoModel<SuperVillagerEntity> {
     @Override

@@ -1,12 +1,10 @@
 package lvedy.super_villager.registry;
 
 import lvedy.super_villager.ModSetting;
+import lvedy.super_villager.special.GUI.TradeGUI;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKeys;
@@ -32,6 +30,13 @@ public class ModCommand {
                 .executes(context -> {
                     ModSetting.resetTrade();
                     ModSetting.start = !ModSetting.start;
+                    return 1;
+                })
+        ));
+
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("测试屏幕")
+                .executes(context -> {
+                    TradeGUI.open(context.getSource().getPlayerOrThrow());
                     return 1;
                 })
         ));

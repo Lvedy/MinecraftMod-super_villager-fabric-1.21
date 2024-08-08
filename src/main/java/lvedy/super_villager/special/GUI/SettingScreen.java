@@ -215,6 +215,6 @@ public class SettingScreen extends Screen{
     public void All(){
         if (client != null)
             client.setScreen(new SettingScreen(Text.literal("设置")));
-        ClientPlayNetworking.send(new SettingC2Spayload_2(ModSetting.getSettingIntArray(),true));
+        ClientPlayNetworking.send(new SettingC2Spayload_2(ModSetting.getSettingIntArray(),true,false));
     }
 }

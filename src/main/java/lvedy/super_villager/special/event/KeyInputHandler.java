@@ -31,7 +31,7 @@ public class KeyInputHandler {
                 if (drinkingkey.wasPressed()) {
                     ModSetting.open_screen = true;
                     ModSetting.look_screen = true;
-                    ClientPlayNetworking.send(new SettingC2Spayload_2((ModSetting.getSettingIntArray()),false));
+                    ClientPlayNetworking.send(new SettingC2Spayload_2((ModSetting.getSettingIntArray()),false,false));
                 }
             }
         });
@@ -43,9 +43,7 @@ public class KeyInputHandler {
                 if (tradekey.wasPressed() && ModSetting.d) {
                     if (client.player != null) {
                         if(!client.player.getWorld().getEntitiesByClass(SuperVillagerEntity.class,client.player.getBoundingBox().expand(15), Entity::isAlive).isEmpty()) {
-                            ModSetting.open_trade_screen = true;
-                            ModSetting.look_trade_screen = true;
-                            ClientPlayNetworking.send(new SettingC2Spayload_2((ModSetting.getSettingIntArray()), false));
+                            ClientPlayNetworking.send(new SettingC2Spayload_2((ModSetting.getSettingIntArray()), false,true));
                         }
                         else
                             client.player.sendMessage(Text.literal("你离村民太远了!!").formatted(Formatting.DARK_RED));

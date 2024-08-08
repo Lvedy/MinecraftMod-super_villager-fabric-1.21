@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -87,7 +86,7 @@ public class CallBack {
         });
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) ->{
-            handler.player.sendMessageToClient(Text.literal("感谢下载本模组并游玩  当前版本beta-0.0.3\n感谢各位老板的支持!").formatted(Formatting.GOLD), false);
+            handler.player.sendMessageToClient(Text.literal("感谢下载本模组并游玩  当前版本beta-0.0.4\n感谢各位老板的支持!").formatted(Formatting.GOLD), false);
             if(server.getPlayerManager().getPlayerList().isEmpty()){
                 ModSetting.resetSetting();
             }
