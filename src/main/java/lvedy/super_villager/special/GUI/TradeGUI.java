@@ -76,7 +76,7 @@ public class TradeGUI {
         {
             ItemStack itemStack = Items.IRON_INGOT.getDefaultStack();
             itemStack.set(DataComponentTypes.CUSTOM_NAME, Text.literal("↓").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
-            gui.setSlot(7, new GuiElementBuilder(itemStack).setCount(2).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,22)));
+            gui.setSlot(7, new GuiElementBuilder(itemStack).setCount(5).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,22)));
         }
         //10号位
         {
@@ -123,9 +123,9 @@ public class TradeGUI {
         //16号位
         {
             ItemStack itemStack = Items.EMERALD.getDefaultStack();
-            itemStack.set(DataComponentTypes.CUSTOM_NAME, Text.literal("购买绿宝石x3").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
-            itemStack.set(DataComponentTypes.LORE, LoreComponent.DEFAULT.with(Text.literal("花费铁x2").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false))));
-            gui.setSlot(16, new GuiElementBuilder(itemStack).setCount(1).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,22)));
+            itemStack.set(DataComponentTypes.CUSTOM_NAME, Text.literal("购买绿宝石x8").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
+            itemStack.set(DataComponentTypes.LORE, LoreComponent.DEFAULT.with(Text.literal("花费铁x5").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false))));
+            gui.setSlot(16, new GuiElementBuilder(itemStack).setCount(8).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,22)));
         }
         //19号位
         {

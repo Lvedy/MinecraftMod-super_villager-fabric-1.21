@@ -170,7 +170,7 @@ public class ModNetWorking{
             return ModSetting.getSlotByItem(player,itemStack,Items.EMERALD.getDefaultStack(),1,16);
         }
         if(a==22)
-            return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.IRON_INGOT.getDefaultStack(),1,2);
+            return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.IRON_INGOT.getDefaultStack(),8,5);
         return false;
     }
 }
