@@ -52,7 +52,7 @@ public class TradeGUI {
         {
             ItemStack itemStack = Items.BONE.getDefaultStack();
             itemStack.set(DataComponentTypes.CUSTOM_NAME, Text.literal("↓").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
-            gui.setSlot(3, new GuiElementBuilder(itemStack).setCount(8).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,3)));
+            gui.setSlot(3, new GuiElementBuilder(itemStack).setCount(5).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,3)));
         }
         //4号位
         {
@@ -64,7 +64,7 @@ public class TradeGUI {
         {
             ItemStack itemStack = Items.SPIDER_EYE.getDefaultStack();
             itemStack.set(DataComponentTypes.CUSTOM_NAME, Text.literal("↓").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
-            gui.setSlot(5, new GuiElementBuilder(itemStack).setCount(3).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,5)));
+            gui.setSlot(5, new GuiElementBuilder(itemStack).setCount(2).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,5)));
         }
         //6号位
         {
@@ -96,7 +96,7 @@ public class TradeGUI {
         {
             ItemStack itemStack = Items.EMERALD.getDefaultStack();
             itemStack.set(DataComponentTypes.CUSTOM_NAME, Text.literal("购买绿宝石x1").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
-            itemStack.set(DataComponentTypes.LORE, LoreComponent.DEFAULT.with(Text.literal("花费骨头x8").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false))));
+            itemStack.set(DataComponentTypes.LORE, LoreComponent.DEFAULT.with(Text.literal("花费骨头x5").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false))));
             gui.setSlot(12, new GuiElementBuilder(itemStack).setCount(1).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,3)));
         }
         //13号位
@@ -110,7 +110,7 @@ public class TradeGUI {
         {
             ItemStack itemStack = Items.EMERALD.getDefaultStack();
             itemStack.set(DataComponentTypes.CUSTOM_NAME, Text.literal("购买绿宝石x1").formatted(Formatting.AQUA).styled((style) -> style.withItalic(false)));
-            itemStack.set(DataComponentTypes.LORE, LoreComponent.DEFAULT.with(Text.literal("花费蜘蛛眼x3").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false))));
+            itemStack.set(DataComponentTypes.LORE, LoreComponent.DEFAULT.with(Text.literal("花费蜘蛛眼x2").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false))));
             gui.setSlot(14, new GuiElementBuilder(itemStack).setCount(1).setCallback((index, clickType, actionType) -> ModSetting.ModTrade(player,5)));
         }
         //15号位
@@ -239,7 +239,7 @@ public class TradeGUI {
             itemStack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS,new AttributeModifiersComponent(list,false));
             gui.setSlot(33, new GuiElementBuilder(itemStack).setCount(1).setCallback((index, clickType, actionType) -> {
                 ModSetting.ModTrade(player,8);
-            }).addLoreLine(Text.literal("花费绿宝石x24").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false)))
+            }).addLoreLine(Text.literal("花费绿宝石x8").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false)))
               .addLoreLine(Text.literal("最大值:30").formatted(Formatting.YELLOW).styled((style) -> style.withItalic(false)))
               .addLoreLine(Text.literal("当前值:"+ ModSetting.villager_armor*0.5).formatted(Formatting.YELLOW).styled((style) -> style.withItalic(false)))
             );
@@ -251,7 +251,7 @@ public class TradeGUI {
             itemStack.set(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true);
             gui.setSlot(34, new GuiElementBuilder(itemStack).setCount(1).setCallback((index, clickType, actionType) -> {
                 ModSetting.ModTrade(player,9);
-            }).addLoreLine(Text.literal("花费绿宝石x24").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false)))
+            }).addLoreLine(Text.literal("花费绿宝石x8").formatted(Formatting.GREEN).styled((style) -> style.withItalic(false)))
               .addLoreLine(Text.literal("最大值:20").formatted(Formatting.YELLOW).styled((style) -> style.withItalic(false)))
               .addLoreLine(Text.literal("当前值:"+ ModSetting.villager_armor_toughness*0.4).formatted(Formatting.YELLOW).styled((style) -> style.withItalic(false))));
         }

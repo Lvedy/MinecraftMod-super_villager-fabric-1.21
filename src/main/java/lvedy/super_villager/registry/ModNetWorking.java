@@ -96,19 +96,19 @@ public class ModNetWorking{
         if(a==2)
             return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.ARROW.getDefaultStack(),1,8);
         if(a==3)
-            return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.BONE.getDefaultStack(),1,8);
+            return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.BONE.getDefaultStack(),1,5);
         if(a==4)
             return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.STRING.getDefaultStack(),2,7);
         if(a==5)
-            return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.SPIDER_EYE.getDefaultStack(),1,3);
+            return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.SPIDER_EYE.getDefaultStack(),1,2);
         if(a==6)
             return ModSetting.getSlotByItem(player,Items.EMERALD.getDefaultStack(),Items.GUNPOWDER.getDefaultStack(),3,5);
         if(a==7)
             return ModSetting.TradeForVillager(player,Items.EMERALD,24,0);
         if(a==8)
-            return ModSetting.TradeForVillager(player,Items.EMERALD,24,1);
+            return ModSetting.TradeForVillager(player,Items.EMERALD,8,1);
         if(a==9)
-            return ModSetting.TradeForVillager(player,Items.EMERALD,24,2);
+            return ModSetting.TradeForVillager(player,Items.EMERALD,8,2);
         if(a==10)
             return ModSetting.getSlotByItem(player,Items.ANVIL.getDefaultStack(),Items.EMERALD.getDefaultStack(),1,48);
         if(a==11) {
